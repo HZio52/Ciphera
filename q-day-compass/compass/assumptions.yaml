@@ -1,0 +1,38 @@
+reference_year: 2026
+
+verdict_rules:
+  red_if_exceeds: central        # compare X+Y with central remaining time
+  yellow_if_exceeds: earliest    # compare X+Y with earliest remaining time
+
+# Anchors: resources needed to break the algorithm (upper bounds from the literature).
+resource_anchors:
+  RSA-2048:
+    physical_qubits: 1000000     # "fewer than 1 million noisy qubits", under a week
+    status: from_paper
+    source: "Gidney (2025), How to factor 2048 bit RSA integers with less than a million noisy qubits, arXiv:2505.15917"
+  ECC-256:
+    physical_qubits: 500000      # "fewer than 500,000 physical qubits", minutes of runtime
+    status: from_paper
+    source: "Google Quantum AI (2026), Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities. TODO: replace secondary-summary link with the paper"
+
+# Scaling for other key sizes. SIMPLIFICATION: required qubits scale linearly with key length.
+key_size_scaling:
+  mode: linear
+  status: illustrative
+  source: "Team simplifying assumption; refine with published per-size estimates"
+
+# Hardware trajectory: physical qubits usable for this attack (error-corrected capacity, simplified).
+hardware_trajectory:
+  start_qubits: 1000
+  status: illustrative
+  source: "ILLUSTRATIVE. Replace with values derived from vendor roadmaps (IBM, Google) before final submission"
+  annual_growth:
+    earliest: 2.37               # chosen so RSA-2048 is about 8 years out
+    central: 1.78                # about 12 years out
+    latest: 1.41                 # about 20 years out
+
+# Families
+families:
+  quantum_vulnerable: [RSA, DH, DSA, ECC, ECDH, ECDSA, ED25519]
+  quantum_safe: [ML-KEM, ML-DSA, SLH-DSA, KYBER, DILITHIUM]
+  out_of_scope: [AES, SHA, SHA2, SHA3, CHACHA20]

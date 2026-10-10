@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Scroll margin offset so sticky header never overlaps anchored or focused elements */
+html {
+  scroll-behavior: smooth;
+}
+
+[id], card, section, article, table, tr {
+  scroll-margin-top: 5rem;
+}

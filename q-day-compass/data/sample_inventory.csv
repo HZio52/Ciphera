@@ -1,0 +1,8 @@
+asset_name,algorithm,data_shelf_life_years,migration_time_years,notes
+Patient records archive,RSA-2048,25,3,Long-lived health records
+Internal HR records,ECC-256,7,2,Employee data
+Short-lived session keys,ECC-256,0.5,2,Rotated frequently
+New service,ML-KEM-768,0,0,Already post-quantum
+Customer database backups,RSA-3072,15,4,Encrypted off-site backups
+Software update signing,ECDSA-P256,10,3,Signature keys: see limitations
+Disk encryption,AES-256,10,1,Symmetric: out of scope in v1
